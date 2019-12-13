@@ -2,14 +2,32 @@ require_relative ('../db/sql_runner')
 
 class Supplier
 
-  attr_reader :name, :products, :preferred, :promotion, :supplier_code
+  attr_reader :name, :preferred, :promotion, :supplier_code, :id
 
-  def initialize(name, supplier_code, preferred = false)
-    @name = name
-    @supplier_code = supplier_code
-    @preferred = preferred
-    @products = []
+  def initialize(options)
+    @name = options['name']
+    @supplier_code = options['supplier_code']
+    @preferred = options['preferred']
     @promotion = false
+  end
+
+  def save()
+    sql = "INSERT INTO suppliers
+    (
+      name,
+      supplier_code,
+      preferred,
+      promotion
+    )
+    VALUES
+    (
+      $1, $2, $3, $4
+    )
+    RETURNING id"
+    values = [@name, @supplier_code, @preferred, @promotion]
+    result = SqlRunner.run(sql, values)
+    id = result.first['id']
+    @id = id
   end
 
 end

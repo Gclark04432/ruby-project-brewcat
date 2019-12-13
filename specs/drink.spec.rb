@@ -11,7 +11,7 @@
 #   def setup
 #     @drink = Drink.new("Punk IPA", 4, "Brewcat", "0001", "bottle")
 #   end
-# 
+#
 #   #Below are the basic read tests for a Drink objects initial attributes
 #   def test_can_read_drink_name
 #     assert_equal("Punk IPA", @drink.name())

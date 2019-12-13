@@ -3,7 +3,10 @@ DROP TABLE suppliers;
 
 CREATE TABLE suppliers (
   id SERIAL PRIMARY KEY,
-  name VARCHAR(255)
+  name VARCHAR(255),
+  supplier_code VARCHAR(255),
+  preferred BOOLEAN,
+  promotion BOOLEAN
 );
 
 CREATE TABLE drinks (

@@ -11,6 +11,7 @@ class Drink
     @product_type = options['product_type']
     @product_code = options['product_code']
     @promotion = false
+    @supplier_id = options['supplier_id']
   end
 
   def save()
@@ -21,14 +22,15 @@ class Drink
       supplier,
       product_type,
       product_code,
-      promotion
+      promotion,
+      supplier_id
     )
     VALUES
     (
-      $1, $2, $3, $4, $5, $6
+      $1, $2, $3, $4, $5, $6, $7
     )
     RETURNING id"
-    values = [@name, @buy_cost, @supplier, @product_type, @product_code, @promotion]
+    values = [@name, @buy_cost, @supplier, @product_type, @product_code, @promotion, @supplier_id]
     result = SqlRunner.run(sql, values)
     id = result.first['id']
     @id = id
