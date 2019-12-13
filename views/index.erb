@@ -1,0 +1,21 @@
+<p>Here are the current suppliers you work with:</p>
+
+<section>
+  <div class="suppliers">
+    <ul>
+      <% @suppliers.map do |supplier| %>
+      <li><p class="bold"><%= supplier.name %></p></li>
+      <hr>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class = "drinks">
+  <ul>
+    <% @drinks.map do |drink| %>
+    <li><p class="bold"><%= drink.name %></p></li>
+    <hr>
+    <% end %>
+  </ul>
+</div>
+</section>
