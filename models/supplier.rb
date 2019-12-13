@@ -9,6 +9,7 @@ class Supplier
     @supplier_code = options['supplier_code']
     @preferred = options['preferred']
     @promotion = false
+    @id = options['id'].to_i if options['id']
   end
 
   def save()
