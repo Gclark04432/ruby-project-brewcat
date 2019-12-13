@@ -1,8 +1,11 @@
 require_relative ('../db/sql_runner')
 
+require ('pry')
+
 class Drink
 
-  attr_reader :name, :buy_cost, :supplier, :product_code, :product_type, :promotion
+  attr_reader :id, :supplier_id
+  attr_accessor :name, :buy_cost, :supplier, :product_code, :product_type, :promotion
 
   def initialize(options)
     @name = options['name']
@@ -36,4 +39,23 @@ class Drink
     @id = id
   end
 
-end
+  def update()
+    sql = "UPDATE drinks SET
+    (
+      name,
+      buy_cost,
+      supplier,
+      product_type,
+      product_code,
+      promotion,
+      supplier_id
+    )
+    =
+    (
+      $1, $2, $3, $4, $5, $6, $7
+      ) WHERE id = $8"
+      values = [@name, @buy_cost, @supplier, @product_type, @product_code, @promotion, @supplier_id, @id]
+      qlRunner.run(sql, values)
+    end
+
+  end
