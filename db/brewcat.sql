@@ -17,5 +17,5 @@ CREATE TABLE drinks (
   product_type VARCHAR(255),
   product_code VARCHAR(255),
   promotion BOOLEAN,
-  supplier_id INT REFERENCES suppliers(id)
+  supplier_id INT REFERENCES suppliers(id) ON DELETE CASCADE
 );

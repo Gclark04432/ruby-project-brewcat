@@ -18,7 +18,7 @@ class Drink
     @id = options['id'].to_i if options['id']
   end
 
-#CRUD methods below
+  #CRUD methods below
   def save()
     sql = "INSERT INTO drinks
     (
@@ -85,7 +85,7 @@ class Drink
       SqlRunner.run(sql, values)
     end
 
-#Helper methods to be used throughout the code
+    #Helper methods to be used throughout the code
     def self.map_drinks(drink_data)
       return drink_data.map { |drink| Drink.new(drink)}
     end
