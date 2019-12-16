@@ -5,16 +5,22 @@ require_relative( '../models/drink.rb' )
 require_relative( '../models/supplier.rb' )
 also_reload( '../models/*' )
 
-#show
+#index
 get '/suppliers/?' do
   @suppliers = Supplier.all()
-  erb(:"supplier/show")
+  erb(:"supplier/index")
 end
 
 #new
 get '/suppliers/new' do
   @suppliers = Supplier.all
   erb(:"supplier/new")
+end
+
+#show
+get '/suppliers/:id' do
+  @supplier = Supplier.find(params[:id])
+  erb(:"supplier/show")
 end
 
 #create
@@ -28,7 +34,7 @@ end
 get '/suppliers/:id' do
   @supplier = Supplier.new(params)
   @supplier.update(params)
-  erb(:"supplier.edit")
+  erb(:"supplier/edit")
 end
 
 #update

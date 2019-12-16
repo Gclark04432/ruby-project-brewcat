@@ -7,5 +7,5 @@ also_reload('./models/*')
 
 get '/' do
   @drinks = Drink.all()
-  erb(:index)
+  erb(:home)
 end
