@@ -6,30 +6,6 @@
   <label for="code">Supplier Code:</label>
   <input value="<%=@supplier.supplier_code%>"type="text" name="supplier_code" id="code">
 
-  <label for="preferred">Preferred Supplier?</label>
-  <select name="preferred" id="preferred">
-    <option value="true"
-      <%= "selected" if @supplier.preferred == true %>>
-      Yes
-    </option>
-    <option value="false"
-      <%= "selected" if @supplier.preferred == false %>>
-      No
-    </option>
-  </select>
-
-  <label for="promotion">On Promotion?</label>
-  <select name="promotion" id="promotion">
-    <option value="true"
-      <%= "selected" if @supplier.promotion == true %>>
-      Yes
-    </option>
-    <option value="false"
-      <%= "selected" if @supplier.promotion == false %>>
-      No
-    </option>
-  </select>
-
   <input type="submit" value="Confirm Amendment">
 
 </form>

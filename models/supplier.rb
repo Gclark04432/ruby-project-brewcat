@@ -3,13 +3,11 @@ require_relative ('../db/sql_runner')
 class Supplier
 
   attr_reader :id
-  attr_accessor :name, :preferred, :promotion, :supplier_code
+  attr_accessor :name, :supplier_code
 
   def initialize(options)
     @name = options['name']
     @supplier_code = options['supplier_code']
-    @preferred = options['preferred']
-    @promotion = options['promotion']
     @id = options['id'].to_i if options['id']
   end
 
@@ -17,16 +15,14 @@ class Supplier
     sql = "INSERT INTO suppliers
     (
       name,
-      supplier_code,
-      preferred,
-      promotion
+      supplier_code
     )
     VALUES
     (
-      $1, $2, $3, $4
+      $1, $2
     )
     RETURNING id"
-    values = [@name, @supplier_code, @preferred, @promotion]
+    values = [@name, @supplier_code]
     result = SqlRunner.run(sql, values)
     id = result.first['id']
     @id = id
@@ -36,13 +32,11 @@ class Supplier
     sql = "UPDATE suppliers SET
     (
       name,
-      supplier_code,
-      preferred,
-      promotion
+      supplier_code
       ) = (
-        $1, $2, $3, $4
-        ) WHERE id = $5"
-        values = [@name, @supplier_code, @preferred, @promotion, @id]
+        $1, $2
+        ) WHERE id = $3"
+        values = [@name, @supplier_code, @id]
         SqlRunner.run(sql, values)
       end
 

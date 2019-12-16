@@ -1,0 +1,17 @@
+<p>Here are the drinks currently in your inventory</p>
+
+<div class = "drinks">
+  <ul>
+    <% @drinks.map do |drink| %>
+    <li><p class="bold">
+      <a href="drinks/<%= drink.id %>"><%= drink.name %></a>
+    </p>
+  </li>
+  <hr>
+  <% end %>
+</ul>
+</div>
+
+<!-- <div>
+<a href="/suppliers/new">Click to create new supplier</a>
+</section> -->
