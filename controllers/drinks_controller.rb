@@ -11,35 +11,35 @@ get '/drinks/?' do
   erb(:"drink/index")
 end
 
-# #new
-# get '/suppliers/new' do
-#   @suppliers = Supplier.all
-#   erb(:"supplier/new")
-# end
-#
+#new
+get '/drinks/new' do
+  @drinks = Drink.all
+  erb(:"drink/new")
+end
+
 #show
 get '/drinks/:id' do
   @drink = Drink.find(params[:id])
   erb(:"drink/show")
 end
-#
-# #create
-# post '/suppliers/?' do
-#   @supplier = Supplier.new(params)
-#   @supplier.save
-#   erb(:"supplier/create")
-# end
-#
-# #edit
-# get '/suppliers/:id/edit' do
-#   @supplier = Supplier.find(params[:id])
-#   erb(:"supplier/edit")
-# end
-#
-# #update
-# post '/suppliers/:id' do
-#   Supplier.new(params).update
-#   redirect to '/suppliers/?'
-# end
-#
-# #destroy/deactivate
+
+#create
+post '/drinks/?' do
+  @drink = Drink.new(params)
+  @drink.save
+  erb(:"drink/create")
+end
+
+#edit
+get '/drinks/:id/edit' do
+  @drink = Drink.find(params[:id])
+  erb(:"drink/edit")
+end
+
+#update
+post '/drinks/:id' do
+  Drink.new(params).update
+  redirect to '/drinks'
+end
+
+#destroy/deactivate

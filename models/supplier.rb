@@ -1,4 +1,5 @@
 require_relative ('../db/sql_runner')
+require_relative ('./drink')
 
 class Supplier
 
@@ -68,17 +69,6 @@ class Supplier
         SqlRunner.run(sql, values)
       end
 
-      def deactivate(id)
-        sql = "UPDATE active FROM suppliers SET active = $1 WHERE id = $2"
-        values = ["false", id]
-        SqlRunner.run(sql, values)
-      end
-
-      def activate(id)
-        sql = "UPDATE active FROM suppliers SET active = $1 WHERE id = $2"
-        values = ["true", id]
-        SqlRunner.run(sql, values)
-      end
 
       #Helper methods to be used throughout the code
       def self.map_suppliers(supplier_data)

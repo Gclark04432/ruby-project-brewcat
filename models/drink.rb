@@ -1,17 +1,16 @@
 require_relative ('../db/sql_runner')
+require_relative ('./supplier')
 
 require ('pry')
 
 class Drink
 
   attr_reader :id, :supplier_id
-  attr_accessor :name, :buy_cost, :supplier, :product_code, :product_type
+  attr_accessor :name, :buy_cost, :supplier
 
   def initialize(options)
     @name = options['name']
     @buy_cost = options['buy_cost']
-    @product_type = options['product_type']
-    @product_code = options['product_code']
     @supplier = options['supplier']
     @supplier_id = options['supplier_id']
     @id = options['id'].to_i if options['id']
@@ -23,17 +22,15 @@ class Drink
     (
       name,
       buy_cost,
-      product_type,
-      product_code,
       supplier,
       supplier_id
     )
     VALUES
     (
-      $1, $2, $3, $4, $5, $6
+      $1, $2, $3, $4
     )
     RETURNING id"
-    values = [@name, @buy_cost, @product_type, @product_code, @supplier, @supplier_id]
+    values = [@name, @buy_cost, @supplier, @supplier_id]
     result = SqlRunner.run(sql, values)
     id = result.first['id']
     @id = id
@@ -44,18 +41,15 @@ class Drink
     (
       name,
       buy_cost,
-      product_type,
-      product_code,
-      promotion,
       supplier,
       supplier_id
     )
     =
     (
-      $1, $2, $3, $4, $5, $6
-      ) WHERE id = $7"
-      values = [@name, @buy_cost, @product_type, @product_code, @supplier, @supplier_id, @id]
-      qlRunner.run(sql, values)
+      $1, $2, $3, $4
+      ) WHERE id = $5"
+      values = [@name, @buy_cost, @supplier, @supplier_id, @id]
+      SqlRunner.run(sql, values)
     end
 
     def self.all

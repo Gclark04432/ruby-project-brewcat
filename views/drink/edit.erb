@@ -1,0 +1,11 @@
+<form action="/drinks/<%=@drink.id%>" method="POST">
+
+<label for="name">Drink Name:</label>
+<input value="<%=@drink.name.capitalize%>" type="text" name="name" id="name">
+
+<label for="buy_cost">Buy in cost:</label>
+<input value="<%=@drink.buy_cost%>"type="text" name="buy_cost" id="buy_cost">
+
+<input type="submit" value="Confirm Amendment">
+
+</form>
