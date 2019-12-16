@@ -4,8 +4,13 @@
   <ul>
     <% @drinks.map do |drink| %>
     <li><p class="bold">
+      <% if drink.stock_level.to_i <= 10 %>
+      <a href="drinks/<%= drink.id %>"><%= drink.name %> !Low Stock Level!</a>
+      <% else %>
       <a href="drinks/<%= drink.id %>"><%= drink.name %></a>
+      <% end %>
     </p>
+
   </li>
   <hr>
   <% end %>

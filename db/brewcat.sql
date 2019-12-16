@@ -13,5 +13,6 @@ CREATE TABLE drinks (
   name VARCHAR(255),
   buy_cost MONEY,
   supplier VARCHAR(255),
+  stock_level INT,
   supplier_id INT REFERENCES suppliers(id) ON DELETE CASCADE
 );

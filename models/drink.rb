@@ -6,12 +6,13 @@ require ('pry')
 class Drink
 
   attr_reader :id, :supplier_id
-  attr_accessor :name, :buy_cost, :supplier
+  attr_accessor :name, :buy_cost, :supplier, :stock_level
 
   def initialize(options)
     @name = options['name']
     @buy_cost = options['buy_cost']
     @supplier = options['supplier']
+    @stock_level = options['stock_level']
     @supplier_id = options['supplier_id']
     @id = options['id'].to_i if options['id']
   end
@@ -23,14 +24,15 @@ class Drink
       name,
       buy_cost,
       supplier,
+      stock_level,
       supplier_id
     )
     VALUES
     (
-      $1, $2, $3, $4
+      $1, $2, $3, $4, $5
     )
     RETURNING id"
-    values = [@name, @buy_cost, @supplier, @supplier_id]
+    values = [@name, @buy_cost, @supplier, @stock_level, @supplier_id]
     result = SqlRunner.run(sql, values)
     id = result.first['id']
     @id = id
@@ -42,17 +44,18 @@ class Drink
       name,
       buy_cost,
       supplier,
+      stock_level,
       supplier_id
     )
     =
     (
-      $1, $2, $3, $4
-      ) WHERE id = $5"
-      values = [@name, @buy_cost, @supplier, @supplier_id, @id]
+      $1, $2, $3, $4, $5
+      ) WHERE id = $6"
+      values = [@name, @buy_cost, @supplier, @stock_level, @supplier_id, @id]
       SqlRunner.run(sql, values)
     end
 
-    def self.all
+    def self.all()
       sql = "SELECT * FROM drinks"
       return map_drinks(SqlRunner.run(sql))
     end
@@ -65,7 +68,7 @@ class Drink
       return Drink.new(result)
     end
 
-    def self.delete_all
+    def self.delete_all()
       sql = "DELETE FROM drinks"
       SqlRunner.run(sql)
     end
@@ -75,6 +78,10 @@ class Drink
       WHERE id = $1"
       values = [@id]
       SqlRunner.run(sql, values)
+    end
+
+    def sell_drink(num)
+      @stock_level -= num
     end
 
     #Helper methods to be used throughout the code
