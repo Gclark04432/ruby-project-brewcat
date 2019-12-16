@@ -31,12 +31,15 @@ post '/suppliers/?' do
 end
 
 #edit
-get '/suppliers/:id' do
-  @supplier = Supplier.new(params)
-  @supplier.update(params)
+get '/suppliers/:id/edit' do
+  @supplier = Supplier.find(params[:id])
   erb(:"supplier/edit")
 end
 
 #update
+post '/suppliers/:id' do
+  Supplier.new(params).update
+  redirect to '/suppliers/?'
+end
 
 #destroy/deactivate

@@ -9,7 +9,7 @@ class Supplier
     @name = options['name']
     @supplier_code = options['supplier_code']
     @preferred = options['preferred']
-    @promotion = false
+    @promotion = options['promotion']
     @id = options['id'].to_i if options['id']
   end
 
@@ -40,7 +40,7 @@ class Supplier
       preferred,
       promotion
       ) = (
-        $1, $2, $3, $5
+        $1, $2, $3, $4
         ) WHERE id = $5"
         values = [@name, @supplier_code, @preferred, @promotion, @id]
         SqlRunner.run(sql, values)

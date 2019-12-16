@@ -9,25 +9,29 @@ Drink.delete_all()
 supplier1 = Supplier.new({
   "name" => "Brewcat",
   "supplier_code" => "001",
-  "preferred" => true})
+  "preferred" => true,
+  "promotion" => false})
   supplier1.save()
 
 supplier2 = Supplier.new({
   "name" => "Belhaven",
   "supplier_code" => "021",
-  "preferred" => false})
+  "preferred" => false,
+  "promotion" => false})
   supplier2.save()
 
 supplier3 = Supplier.new({
   "name" => "Smirnoff",
   "supplier_code" => "432",
-  "preferred" => true})
+  "preferred" => true,
+  "promotion" => false})
   supplier3.save()
 
 supplier4 = Supplier.new({
   "name" => "Stewarts",
   "supplier_code" => "907",
-  "preferred" => false})
+  "preferred" => false,
+  "promotion" => true})
   supplier4.save()
 
 drink1 = Drink.new({
