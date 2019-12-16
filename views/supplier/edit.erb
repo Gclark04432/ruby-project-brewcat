@@ -6,6 +6,19 @@
   <label for="code">Supplier Code:</label>
   <input value="<%=@supplier.supplier_code%>"type="text" name="supplier_code" id="code">
 
-  <input type="submit" value="Confirm Amendment">
+  <label for="active">Satus:</label>
+  <select name="active" id="active">
+    <option value="true"
+    <%= "selected" if @supplier.active == "t" %>>
+    Active
+  </option>
+
+  <option value="false"
+  <%= "selected" if @supplier.active == "f" %>>
+  Inactive
+</option>
+</select>
+
+<input type="submit" value="Confirm Amendment">
 
 </form>

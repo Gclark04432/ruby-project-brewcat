@@ -3,11 +3,12 @@ require_relative ('../db/sql_runner')
 class Supplier
 
   attr_reader :id
-  attr_accessor :name, :supplier_code
+  attr_accessor :name, :supplier_code, :active
 
   def initialize(options)
     @name = options['name']
     @supplier_code = options['supplier_code']
+    @active = options['active'] || true
     @id = options['id'].to_i if options['id']
   end
 
@@ -15,14 +16,15 @@ class Supplier
     sql = "INSERT INTO suppliers
     (
       name,
-      supplier_code
+      supplier_code,
+      active
     )
     VALUES
     (
-      $1, $2
+      $1, $2, $3
     )
     RETURNING id"
-    values = [@name, @supplier_code]
+    values = [@name, @supplier_code, @active]
     result = SqlRunner.run(sql, values)
     id = result.first['id']
     @id = id
@@ -32,11 +34,12 @@ class Supplier
     sql = "UPDATE suppliers SET
     (
       name,
-      supplier_code
+      supplier_code,
+      active
       ) = (
-        $1, $2
-        ) WHERE id = $3"
-        values = [@name, @supplier_code, @id]
+        $1, $2, $3
+        ) WHERE id = $4"
+        values = [@name, @supplier_code, @active, @id]
         SqlRunner.run(sql, values)
       end
 
@@ -62,6 +65,18 @@ class Supplier
         sql = "DELETE FROM suppliers
         WHERE id = $1"
         values = [@id]
+        SqlRunner.run(sql, values)
+      end
+
+      def deactivate(id)
+        sql = "UPDATE active FROM suppliers SET active = $1 WHERE id = $2"
+        values = ["false", id]
+        SqlRunner.run(sql, values)
+      end
+
+      def activate(id)
+        sql = "UPDATE active FROM suppliers SET active = $1 WHERE id = $2"
+        values = ["true", id]
         SqlRunner.run(sql, values)
       end
 

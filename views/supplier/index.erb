@@ -7,7 +7,11 @@
       <li>
         <p class="bold">
           <a href="/suppliers/<%=supplier.id%>">
-            <%= supplier.name %></a>
+            <% if supplier.active == "t" %>
+            <%= supplier.name %></a
+            <% else %>
+            <%= supplier.name %> is inactive
+            <% end%>
           </p>
         </li>
         <hr>

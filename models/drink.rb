@@ -10,9 +10,9 @@ class Drink
   def initialize(options)
     @name = options['name']
     @buy_cost = options['buy_cost']
-    @supplier = options['supplier']
     @product_type = options['product_type']
     @product_code = options['product_code']
+    @supplier = options['supplier']
     @supplier_id = options['supplier_id']
     @id = options['id'].to_i if options['id']
   end
@@ -23,9 +23,9 @@ class Drink
     (
       name,
       buy_cost,
-      supplier,
       product_type,
       product_code,
+      supplier,
       supplier_id
     )
     VALUES
@@ -33,7 +33,7 @@ class Drink
       $1, $2, $3, $4, $5, $6
     )
     RETURNING id"
-    values = [@name, @buy_cost, @supplier, @product_type, @product_code, @supplier_id]
+    values = [@name, @buy_cost, @product_type, @product_code, @supplier, @supplier_id]
     result = SqlRunner.run(sql, values)
     id = result.first['id']
     @id = id
@@ -44,17 +44,17 @@ class Drink
     (
       name,
       buy_cost,
-      supplier,
       product_type,
       product_code,
       promotion,
+      supplier,
       supplier_id
     )
     =
     (
       $1, $2, $3, $4, $5, $6
       ) WHERE id = $7"
-      values = [@name, @buy_cost, @supplier, @product_type, @product_code, @supplier_id, @id]
+      values = [@name, @buy_cost, @product_type, @product_code, @supplier, @supplier_id, @id]
       qlRunner.run(sql, values)
     end
 
