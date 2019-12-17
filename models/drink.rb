@@ -11,7 +11,7 @@ class Drink
   def initialize(options)
     @name = options['name']
     @buy_cost = options['buy_cost']
-    @sell_price = options['sell_price'] || @buy_cost.to_i * 1.2
+    @sell_price = options['sell_price'] || @buy_cost * 1.2
     @supplier = options['supplier']
     @stock_level = options['stock_level']
     @supplier_id = options['supplier_id']

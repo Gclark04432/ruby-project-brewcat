@@ -1,14 +1,13 @@
 #page-header {
   display: flex;
-  flex-flow: row || nowrap;
   justify-content: flex-start;
   align-items: flex-start;
   height: 150px;
-  background-color: #ACC;
   color: black;
 }
 
 .navigation {
+  justify-content: flex-start;
   list-style: none;
   margin: 0;
 
@@ -31,10 +30,16 @@
   color: blue;
 }
 
-#content {
+/* #content {
   border-left: 1px solid darkred;
   padding-left: 25px;
-}
+} */
+
+/* .logo {
+  background-color: orange;
+  background-repeat: no-repeat;
+  grid-column-start: 2;
+} */
 
 /* body #page-header .section > nav {
   display: flex;

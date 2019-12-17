@@ -3,6 +3,16 @@
 <hr>
 
 <table>
+  <style>
+    .low_stock{
+      background-color: orange;
+    }
+
+    .no_stock{
+      background-color: red;
+    }
+
+  </style>
   <tr>
     <th>Poduct Name</th>
     <th>Supplier</th>
@@ -15,7 +25,7 @@
   <tr>
     <td>
       <a href="drinks/<%= drink.id %>"><%= drink.name %></a>
-      </td>
+    </td>
     <td>
       <%= drink.supplier %>
     </td>
@@ -28,9 +38,19 @@
     <td>
       <%= sprintf('%.2f', (drink.sell_price.to_f - drink.buy_cost.to_f)) %>
     </td>
+    <% if drink.stock_level.to_i == 0 %>
+    <td class="no_stock">
+      <%= drink.stock_level %>
+    </td>
+    <% elsif drink.stock_level.to_i <= 10 %>
+    <td class="low_stock">
+      <%= drink.stock_level %>
+    </td>
+    <% else %>
     <td>
       <%= drink.stock_level %>
     </td>
+    <% end %>
     <% end %>
 
   </table>

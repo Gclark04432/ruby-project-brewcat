@@ -7,5 +7,7 @@ require_relative('controllers/drinks_controller.rb')
 also_reload('./models/*')
 
 get '/' do
+  @drinks = Drink.all()
+  @suppliers = Supplier.all()
   erb(:home)
 end
