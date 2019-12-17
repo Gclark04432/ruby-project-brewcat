@@ -11,7 +11,8 @@ CREATE TABLE suppliers (
 CREATE TABLE drinks (
   id SERIAL PRIMARY KEY,
   name VARCHAR(255),
-  buy_cost MONEY,
+  buy_cost DECIMAL(6,2),
+  sell_price DECIMAL(6,2),
   supplier VARCHAR(255),
   stock_level INT,
   supplier_id INT REFERENCES suppliers(id) ON DELETE CASCADE

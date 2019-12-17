@@ -6,11 +6,12 @@ require ('pry')
 class Drink
 
   attr_reader :id, :supplier_id
-  attr_accessor :name, :buy_cost, :supplier, :stock_level
+  attr_accessor :name, :buy_cost, :supplier, :stock_level, :sell_price
 
   def initialize(options)
     @name = options['name']
     @buy_cost = options['buy_cost']
+    @sell_price = options['sell_price'] || @buy_cost.to_i * 1.2
     @supplier = options['supplier']
     @stock_level = options['stock_level']
     @supplier_id = options['supplier_id']
@@ -23,16 +24,17 @@ class Drink
     (
       name,
       buy_cost,
+      sell_price,
       supplier,
       stock_level,
       supplier_id
     )
     VALUES
     (
-      $1, $2, $3, $4, $5
+      $1, $2, $3, $4, $5, $6
     )
     RETURNING id"
-    values = [@name, @buy_cost, @supplier, @stock_level, @supplier_id]
+    values = [@name, @buy_cost, @sell_price, @supplier, @stock_level, @supplier_id]
     result = SqlRunner.run(sql, values)
     id = result.first['id']
     @id = id
@@ -43,15 +45,16 @@ class Drink
     (
       name,
       buy_cost,
+      sell_price,
       supplier,
       stock_level,
       supplier_id
     )
     =
     (
-      $1, $2, $3, $4, $5
-      ) WHERE id = $6"
-      values = [@name, @buy_cost, @supplier, @stock_level, @supplier_id, @id]
+      $1, $2, $3, $4, $5, $6
+      ) WHERE id = $7"
+      values = [@name, @buy_cost, @sell_price, @supplier, @stock_level, @supplier_id, @id]
       SqlRunner.run(sql, values)
     end
 

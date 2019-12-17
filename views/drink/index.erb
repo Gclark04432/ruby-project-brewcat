@@ -6,28 +6,28 @@
   <tr>
     <th>Poduct Name</th>
     <th>Supplier</th>
-    <th>Buy Price</th>
-    <th>Sell Price</th>
-    <th>Profit per unit</th>
+    <th>Buy Price (£)</th>
+    <th>Sell Price (£)</th>
+    <th>Profit per unit (£)</th>
     <th>Stock Level</th>
   </tr>
   <% @drinks.map do |drink| %>
   <tr>
     <td>
-      <% if drink.stock_level.to_i <= 10 %>
-      <a href="drinks/<%= drink.id %>"><%= drink.name %> !Low Stock Level!</a>
-      <% else %>
       <a href="drinks/<%= drink.id %>"><%= drink.name %></a>
-      <% end %>
-    </td>
+      </td>
     <td>
       <%= drink.supplier %>
     </td>
     <td>
       <%= drink.buy_cost %>
     </td>
-    <td>|</td>
-    <td>TBC</td>
+    <td>
+      <%= drink.sell_price %>
+    </td>
+    <td>
+      <%= sprintf('%.2f', (drink.sell_price.to_f - drink.buy_cost.to_f)) %>
+    </td>
     <td>
       <%= drink.stock_level %>
     </td>
