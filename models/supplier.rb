@@ -71,12 +71,14 @@ class Supplier
         SqlRunner.run(sql, values)
       end
 
-      def drinks()
+      def drinks(id)
         sql = "SELECT * FROM drinks WHERE supplier_id = $1"
-        values = [@id]
+        values = [id]
         result = SqlRunner.run(sql, values)
         @drinks = map_drinks(result)
       end
+
+      # binding.pry()
 
       #Helper methods to be used throughout the code
       def self.map_suppliers(supplier_data)

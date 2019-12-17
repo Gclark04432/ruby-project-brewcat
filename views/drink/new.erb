@@ -7,13 +7,13 @@
   <input type="text" name="buy_cost" id="buy_cost" required>
 
   <label for="supplier">Supplier:</label>
-  <select name="supplier" id="supplier">
+  <select name="supplier" id="supplier" required>
     <% @suppliers.each do |supplier| %>
     <% if supplier.active == "t" %>
-    <option value=<% supplier.id %>><%= supplier.name.capitalize %></option>
+    <option value=<%= supplier.name %>><%= supplier.name.capitalize %></option>
     <% end %>
     <% end %>
-    
+
   </select>
 
   <label for="stock_level">Current stock:</label>

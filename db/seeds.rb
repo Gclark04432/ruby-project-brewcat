@@ -99,3 +99,6 @@ drink9 = Drink.new({
   "stock_level" => 30,
   "supplier_id" => supplier1.id})
   drink9.save()
+
+  # binding.pry()
+  # nil

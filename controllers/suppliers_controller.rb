@@ -20,7 +20,7 @@ end
 #show
 get '/suppliers/:id' do
   @supplier = Supplier.find(params[:id])
-  @drinks = @supplier.drinks()
+  @drinks = @supplier.drinks(@supplier.id)
   erb(:"supplier/show")
 end
 

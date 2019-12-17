@@ -17,4 +17,19 @@
 </ul>
 </div>
 
+<form action="/drinks" method="GET">
+
+  <p>Filter by supplier below</p>
+  <label for="supplier">Supplier:</label>
+  <select name="supplier" id="supplier">
+    <% @suppliers.each do |supplier| %>
+    <option value=<%= supplier.id %>><%= supplier.name.capitalize %></option>
+    <% end %>
+  </select>
+
+  <input type="submit" value="Filter">
+
+</form>
+
+
 <a href="/drinks/new">Click to create new drink</a>

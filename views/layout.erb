@@ -3,9 +3,8 @@
 <head>
   <meta charset="utf-8">
   <title>This page loads</title>
-  <nav>
-    <a href="/">Home Page</a>
-  </nav>
+
+
 
   <!-- <link rel="image" href="../images/opening.png" /> -->
 
@@ -13,6 +12,18 @@
 
 </head>
 <body>
+  <header id="page-header">
+    <section>
+      <nav>
+        <ul class="navigation">
+          <li><a href="/">Home</a></li>
+          <li><a href="/suppliers">Suppliers</a></li>
+          <li><a href="/drinks">Drinks</a></li>
+        </ul>
+      </nav>
+    </section>
+  </header>
+
   <%= yield %>
 </body>
 </html>

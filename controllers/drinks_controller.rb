@@ -7,7 +7,8 @@ also_reload( '../models/*' )
 
 #index
 get '/drinks/?' do
-  @drinks =Drink.all()
+  @drinks = Drink.all()
+  @suppliers = Supplier.all()
   erb(:"drink/index")
 end
 

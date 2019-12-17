@@ -80,8 +80,10 @@ class Drink
       SqlRunner.run(sql, values)
     end
 
-    def sell_drink(num)
-      @stock_level -= num
+    def add_stock(num)
+      sql = "UPDATE stock_level FROM drinks SET stock_level = stock_level + $1
+      WHERE id = $2"
+      values = [num, @id]
     end
 
     #Helper methods to be used throughout the code

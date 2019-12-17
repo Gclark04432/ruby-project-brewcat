@@ -1,49 +1,33 @@
-/* body {
-  max-width: 100;
-  max-height: 200;
-  background-image: url("../images/opening.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  color: white;
-  align-items: center;
-}
-
-body div.suppliers {
-  color: red;
+#page-header {
+  display: flex;
+  flex-flow: row || nowrap;
   justify-content: flex-start;
-  margin-top: 15px;
-}
-
-body div.drinks {
-  color: red;
-  justify-content: flex-start;
-  margin-top: 15px;
-}
-
-section {
-  margin: 0 1.5em;
-  padding: 0 1.5em 3em;
-  display: grid;
-  grid-gap: 3em;
-  grid-template-columns: 2fr 2fr;
-
-  position: relative;
-}
-
-ul {
-  padding-top: 10px;
-  margin: 15px;
-}
-
-li {
-  background-color: white;
-  opacity: 60%;
-  font-size: 20px;
-}
-
-li p.bold {
-  font-style: bold;
+  align-items: flex-start;
+  height: 150px;
+  background-color: #ACC;
   color: black;
-  opacity: 100%;
+}
+
+.navigation {
+  list-style: none;
+  margin: 0;
+
+  background: #ACC;
+
+  flex-flow: flex-start;
+  flex-wrap: row wrap;
+}
+
+.navigation a {
+  text-decoration: none;
+  display: block;
+  padding: 1em;
+  color: red;
+  font-weight: bold;
+}
+
+/* body #page-header .section > nav {
+  display: flex;
+  margin: auto;
+  background-color: blue;
 } */
