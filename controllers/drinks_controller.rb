@@ -6,6 +6,7 @@ require_relative( '../models/supplier.rb' )
 also_reload( '../models/*' )
 
 #index
+
 get '/drinks/?' do
   @drinks = Drink.all()
   @suppliers = Supplier.all()
