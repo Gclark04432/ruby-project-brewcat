@@ -1,6 +1,8 @@
 require_relative ('../db/sql_runner')
 require_relative ('./drink')
 
+require ('pry')
+
 class Supplier
 
   attr_reader :id
@@ -69,10 +71,20 @@ class Supplier
         SqlRunner.run(sql, values)
       end
 
+      def drinks()
+        sql = "SELECT * FROM drinks WHERE supplier_id = $1"
+        values = [@id]
+        result = SqlRunner.run(sql, values)
+        @drinks = map_drinks(result)
+      end
 
       #Helper methods to be used throughout the code
       def self.map_suppliers(supplier_data)
         return  supplier_data.map { |supplier| Supplier.new(supplier)}
+      end
+
+      def map_drinks(drink_data)
+        return drink_data.map { |drink| Drink.new(drink)}
       end
 
     end

@@ -6,3 +6,11 @@
 </a>
 
 <h1>The below drinks are supplied by this supplier:</h1>
+
+<% @drinks.each do |drink| %>
+<ul>
+  <li>
+    <a href="/drinks/<%= drink.id %>"><%= drink.name %></a>
+  </li>
+</ul>
+<% end %>
