@@ -5,11 +5,17 @@ require_relative( '../models/drink.rb' )
 require_relative( '../models/supplier.rb' )
 also_reload( '../models/*' )
 
+require ('pry')
 #index
 
 get '/drinks/?' do
-  @drinks = Drink.all()
   @suppliers = Supplier.all()
+
+  if params[:supplier_id]
+    @drinks = Supplier.drinks(params[:supplier_id].to_i)
+  else
+    @drinks = Drink.all()
+  end
   erb(:"drink/index")
 end
 

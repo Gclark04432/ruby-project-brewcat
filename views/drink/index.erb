@@ -35,11 +35,11 @@
 
   </table>
 
-  <form action="/drinks" method="GET">
+  <form action="/drinks/" method="GET">
 
     <p>Filter by supplier below</p>
     <label for="supplier">Supplier:</label>
-    <select name="supplier" id="supplier">
+    <select name="supplier_id" id="supplier">
       <% @suppliers.each do |supplier| %>
       <option value=<%= supplier.id %>><%= supplier.name.capitalize %></option>
       <% end %>

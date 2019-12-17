@@ -71,7 +71,7 @@ class Supplier
         SqlRunner.run(sql, values)
       end
 
-      def drinks(id)
+      def self.drinks(id)
         sql = "SELECT * FROM drinks WHERE supplier_id = $1"
         values = [id]
         result = SqlRunner.run(sql, values)
@@ -85,7 +85,7 @@ class Supplier
         return  supplier_data.map { |supplier| Supplier.new(supplier)}
       end
 
-      def map_drinks(drink_data)
+      def self.map_drinks(drink_data)
         return drink_data.map { |drink| Drink.new(drink)}
       end
 
