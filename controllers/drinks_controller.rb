@@ -14,6 +14,7 @@ end
 #new
 get '/drinks/new' do
   @drinks = Drink.all
+  @suppliers = Supplier.all
   erb(:"drink/new")
 end
 
