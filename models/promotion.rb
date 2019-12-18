@@ -64,7 +64,8 @@ class Promotion
 
     @drinks.each do |drink|
 
-      adjustment = (drink.buy_cost.to_f + ((drink.sell_price.to_f - drink.buy_cost.to_f) / (1 + @percentage.to_f/100)).to_f)
+      current_margin = (drink.sell_price.to_f - drink.buy_cost.to_f)
+      adjustment = (drink.buy_cost.to_f + (current_margin / (1 + @percentage.to_f/100)).to_f)
       sql = "UPDATE drinks SET
       sell_price = $1
       WHERE id = $2"

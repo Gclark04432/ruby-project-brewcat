@@ -4,13 +4,12 @@
   grid-gap: 15rem;
   color: black;
   background: #119BB0;
+  max-width: auto;
 }
 
 img {
-  margin-top: 5px;
-  max-width: 200px;
-  max-height: 100px;
-  align-content: flex-end;
+  max-width: auto;
+  max-height: auto;
 }
 
 ul {
@@ -33,7 +32,9 @@ ul {
 section.logo {
   font-size: 50px;
   font-weight: bold;
-font-stretch: expanded;
+  font-stretch: expanded;
+  align-self: center;
+  justify-content: center;
 }
 
 body {
