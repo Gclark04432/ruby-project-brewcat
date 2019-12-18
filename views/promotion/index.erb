@@ -2,6 +2,10 @@
 <h3>Current Promotions below:</h3>
 <hr>
 
+<p>
+  <a href="/promotions/new">Click to add new promotion
+  </a>
+</p>
 
 <table>
   <tr>
@@ -20,6 +24,9 @@
     <td>
       <%= Supplier.drinks(promotion.supplier_id).length %>
     </td>
+    <td><form action="/promotions/activate" method="GET">
+      <input type="submit" value="Activate Promotion">
+    </form>
   </tr>
   <% end %>
 

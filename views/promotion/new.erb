@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<form action="/promotions" method="POST">
+
+  <label for="supplier">Supplier:</label>
+  <select name="supplier_id" id="supplier">
+    <% @suppliers.each do |supplier| %>
+    <option value="<%= supplier.id %>"><%= supplier.name %>
+    </option>
+    <% end %>
+  </select>
+  
+  <label for="type">Type:</label>
+  <input type="text" name="type" id="type">
+
+  <input type="submit" value="Add Promotion">
+
+</form>

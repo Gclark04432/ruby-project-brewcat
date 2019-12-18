@@ -12,11 +12,11 @@ get '/promotions/?' do
   erb(:"promotion/index")
 end
 
-# #new
-# get '/suppliers/new' do
-#   @suppliers = Supplier.all
-#   erb(:"supplier/new")
-# end
+#new
+get '/promotions/new' do
+  @suppliers = Supplier.all
+  erb(:"promotion/new")
+end
 #
 # #show
 # get '/suppliers/:id' do
@@ -25,12 +25,12 @@ end
 #   erb(:"supplier/show")
 # end
 #
-# #create
-# post '/suppliers/?' do
-#   @supplier = Supplier.new(params)
-#   @supplier.save
-#   erb(:"supplier/create")
-# end
+#create
+post '/promotions/?' do
+  @promotion = Promotion.new(params)
+  @promotion.save
+  erb(:"promotion/create")
+end
 #
 # #edit
 # get '/suppliers/:id/edit' do
