@@ -84,9 +84,10 @@ class Drink
     end
 
     def add_stock(num)
-      sql = "UPDATE stock_level FROM drinks SET stock_level = stock_level + $1
+      sql = "UPDATE drinks SET stock_level = stock_level + $1
       WHERE id = $2"
       values = [num, @id]
+      SqlRunner.run(sql, values)
     end
 
     #Helper methods to be used throughout the code

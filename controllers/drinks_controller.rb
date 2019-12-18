@@ -50,3 +50,16 @@ post '/drinks/:id' do
   Drink.new(params).update
   redirect to '/drinks'
 end
+
+binding.pry()
+#Order
+get '/drinks/:id/order' do
+  @drink = Drink.find(params[:id])
+  erb(:"drink/order")
+end
+
+post '/drinks/:id/order-confirmation' do
+  @drink = Drink.find(params[:id])
+  @drink.add_stock(params[:order_amount].to_i)
+  redirect to "/drinks/#{params[:id]}"
+end

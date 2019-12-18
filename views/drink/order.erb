@@ -1,0 +1,10 @@
+<p>Show page</p>
+
+<form action="/drinks/<%=@drink.id%>/order-confirmation" method="POST">
+
+  <label for="order">Units to order:</label>
+  <input type="number" name="order_amount" id="order" min="1" required>
+
+  <input type="submit" value="Order drinks">
+  
+</form>
