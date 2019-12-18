@@ -5,8 +5,10 @@
   <title>This page loads</title>
 
 
-  <link rel="image" href="../images/cat.png" />
-  <link rel="image" href="../images/opening.png" />
+  <link rel="image" href="/images/cat.png" />
+  <link rel="image" href="/images/opening.png" />
+
+  <link rel="icon" href="/images/exclamation-triangle-solid.svg">
 
   <link rel="stylesheet" type="text/css" href="/styles/style.css">
   <link rel="stylesheet" type="text/css" href="/styles/tables.css">
@@ -15,20 +17,26 @@
 <body>
   <header id="page-header">
     <section>
-      <nav>
-        <ul class="navigation">
+      <nav class="navigation">
+        <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/suppliers">Suppliers</a></li>
           <li><a href="/drinks">Drinks</a></li>
           <li><a href="/promotions">Promotions</a></li>
         </ul>
       </nav>
-      <nav class="logo">
-        </nav>
+    </section>
+    <section class="logo">
+      Welcome to BrewCat <img src="images/cat.png" alt="Cat">
     </section>
   </header>
 
   <%= yield %>
 
 </body>
+
+<footer>
+  <br><br>
+  &copy; Gary Clark 2019
+</footer>
 </html>

@@ -1,7 +1,9 @@
 <link rel="stylesheet" type="text/css" href="/styles/style.css">
 <link rel="stylesheet" type="text/css" href="/styles/tables.css">
 
-<h1>You have the following notifications</h1>
+<hr>
+<h3>Outstanding Notifications:</h3>
+<hr>
 
 <table>
   <tr>
@@ -13,7 +15,7 @@
   <% @drinks.each do |drink| %>
   <% if drink.stock_level.to_i == 0 %>
   <tr>
-    <td>
+    <td class="warning">
       Out of stock!
     </td>
     <td> <%= drink.supplier %> </td>
@@ -22,7 +24,7 @@
   </tr>
   <% elsif drink.stock_level.to_i <= 10 %>
   <tr>
-    <td>
+    <td class="warning">
       Low stock Level
     </td>
     <td> <%= drink.supplier %> </td>

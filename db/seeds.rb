@@ -42,7 +42,7 @@ drink2 = Drink.new({
   "name" => "Elvis Juice",
   "buy_cost" => 4.5,
   "supplier" => supplier1.name,
-  "stock_level" => 70,
+  "stock_level" => 0,
   "supplier_id" => supplier1.id})
   drink2.save()
 
@@ -64,7 +64,7 @@ drink4 = Drink.new({
 
 drink5 = Drink.new({
   "name" => "Red Vodka",
-  "buy_cost" => 12,
+  "buy_cost" => 11,
   "supplier" => supplier3.name,
   "stock_level" => 17,
   "supplier_id" => supplier3.id})
@@ -82,7 +82,7 @@ drink7 = Drink.new({
   "name" => "Stewart's Lager",
   "buy_cost" => 3.4,
   "supplier" => supplier4.name,
-  "stock_level" => 40,
+  "stock_level" => 10,
   "supplier_id" => supplier4.id})
   drink7.save()
 
@@ -98,7 +98,7 @@ drink9 = Drink.new({
   "name" => "Tactical Nuclear Penguin",
   "buy_cost" => 9,
   "supplier" => supplier1.name,
-  "stock_level" => 30,
+  "stock_level" => 0,
   "supplier_id" => supplier1.id})
   drink9.save()
 
