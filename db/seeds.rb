@@ -6,6 +6,7 @@ require ('pry')
 
 Supplier.delete_all()
 Drink.delete_all()
+Promotion.delete_all()
 
 supplier1 = Supplier.new({
   "name" => "Brewcat",
@@ -104,14 +105,14 @@ drink9 = Drink.new({
 promotion1 = Promotion.new({
   "supplier_id" => supplier1.id,
   "drink_id" => drink1.id,
-  "type" => "10%"
+  "percentage" => "10"
   })
   promotion1.save()
 
 promotion2 = Promotion.new({
   "supplier_id" => supplier2.id,
   "drink_id" => drink8.id,
-  "type" => "5%"
+  "percentage" => "5"
   })
 promotion2.save()
 

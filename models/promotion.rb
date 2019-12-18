@@ -6,13 +6,12 @@ require ('pry')
 
 class Promotion
 
-  attr_reader :supplier_id, :drink_id, :id
-  attr_accessor :type
+  attr_reader :supplier_id, :drink_id, :percentage, :id
 
   def initialize(options)
     @supplier_id = options['supplier_id']
     @drink_id = options['drink_id']
-    @type = options['type']
+    @percentage = options['percentage'].to_i
     @id = options['id'].to_i if options['id']
   end
 
@@ -22,61 +21,60 @@ class Promotion
     (
       supplier_id,
       drink_id,
-      type
+      percentage
     )
     VALUES
     (
       $1, $2, $3
     )
     RETURNING id"
-    values = [@supplier_id, @drink_id, @type]
+    values = [@supplier_id, @drink_id, @percentage]
     result = SqlRunner.run(sql, values)
     id = result.first['id']
     @id = id
   end
 
-  def update()
-    sql = "UPDATE promotions SET
-    (
-      supplier_id,
-      drink_id,
-      type
-    )
-    =
-    (
-      $1, $2, $3
-      ) WHERE id = $4"
-      values = [@supplier_id, @drink_id, @type, @id]
-      SqlRunner.run(sql, values)
-    end
-
-    def self.all()
-      sql = "SELECT * FROM promotions"
-      return map_promotions(SqlRunner.run(sql))
-    end
-
-    def self.find(id)
-      sql = "SELECT * FROM promotions
-      WHERE id = $1"
-      values = [id]
-      result = SqlRunner.run(sql, values).first()
-      return Promotion.new(result)
-    end
-
-    def self.delete_all()
-      sql = "DELETE FROM promotions"
-      SqlRunner.run(sql)
-    end
-
-    def delete()
-      sql = "DELETE FROM promotions
-      WHERE id = $1"
-      values = [@id]
-      SqlRunner.run(sql, values)
-    end
-
-    def self.map_promotions(promotion_data)
-      return  promotion_data.map { |promotion| Promotion.new(promotion)}
-    end
-
+  def self.all()
+    sql = "SELECT * FROM promotions"
+    return map_promotions(SqlRunner.run(sql))
   end
+
+  def self.find(id)
+    sql = "SELECT * FROM promotions
+    WHERE id = $1"
+    values = [id]
+    result = SqlRunner.run(sql, values).first()
+    return Promotion.new(result)
+  end
+
+  def self.delete_all()
+    sql = "DELETE FROM promotions"
+    SqlRunner.run(sql)
+  end
+
+  def delete()
+    sql = "DELETE FROM promotions
+    WHERE id = $1"
+    values = [@id]
+    SqlRunner.run(sql, values)
+  end
+
+  def activate()
+    @drinks = Supplier.drinks(@supplier_id)
+
+    @drinks.each do |drink|
+
+      adjustment = (drink.buy_cost.to_f + ((drink.sell_price.to_f - drink.buy_cost.to_f) / (1 + @percentage.to_f/100)).to_f)
+      sql = "UPDATE drinks SET
+      sell_price = $1
+      WHERE id = $2"
+      values = [adjustment, drink.id]
+      SqlRunner.run(sql, values)
+    end
+  end
+
+  def self.map_promotions(promotion_data)
+    return  promotion_data.map { |promotion| Promotion.new(promotion)}
+  end
+
+end

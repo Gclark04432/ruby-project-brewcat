@@ -52,7 +52,6 @@ post '/drinks/:id' do
   redirect to '/drinks'
 end
 
-binding.pry()
 #Order
 get '/drinks/:id/order' do
   @drink = Drink.find(params[:id])

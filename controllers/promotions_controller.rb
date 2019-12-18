@@ -33,6 +33,13 @@ post '/promotions/:id/delete' do
   redirect to '/promotions'
 end
 
+#activate promotion
+post '/promotions/:id/activate' do
+  @promotion = Promotion.find(params['id'])
+  @promotion.activate()
+  redirect to '/drinks'
+end
+
 # #edit
 # get '/promotions/:id/edit' do
 #   @promotion = Promotion.find(params[:id])

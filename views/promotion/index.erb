@@ -10,7 +10,7 @@
 <table>
   <tr>
     <th>Supplier</th>
-    <th>Promotion Type</th>
+    <th>Discount</th>
     <th>Number of affected products</th>
   </tr>
   <% @promotions.each do |promotion| %>
@@ -19,12 +19,12 @@
       <%= Supplier.find(promotion.supplier_id).name %>
     </td>
     <td>
-      <%= promotion.type %> Discount
+      <%= promotion.percentage %>% Discount
     </td>
     <td>
       <%= Supplier.drinks(promotion.supplier_id).length %>
     </td>
-    <td><form action="/promotions/activate" method="GET">
+    <td><form action="/promotions/<%= promotion.id %>/activate" method="POST">
       <input type="submit" value="Activate Promotion">
     </form>
   </td>

@@ -23,5 +23,5 @@ CREATE TABLE promotions (
   id SERIAL PRIMARY KEY,
   supplier_id INT REFERENCES suppliers(id) ON DELETE CASCADE,
   drink_id INT REFERENCES drinks(id) ON DELETE CASCADE,
-  type VARCHAR(255)
-)
+  percentage INT2
+);
