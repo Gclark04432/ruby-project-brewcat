@@ -1,5 +1,6 @@
 require_relative('../models/drink')
 require_relative('../models/supplier')
+require_relative('../models/promotion')
 
 require ('pry')
 
@@ -99,6 +100,21 @@ drink9 = Drink.new({
   "stock_level" => 30,
   "supplier_id" => supplier1.id})
   drink9.save()
+
+promotion1 = Promotion.new({
+  "supplier_id" => supplier1.id,
+  "drink_id" => drink1.id,
+  "type" => "10%"
+  })
+  promotion1.save()
+
+promotion2 = Promotion.new({
+  "supplier_id" => supplier2.id,
+  "drink_id" => drink8.id,
+  "type" => "5%"
+  })
+promotion2.save()
+
 
   # binding.pry()
   # nil

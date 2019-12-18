@@ -1,3 +1,4 @@
+DROP TABLE promotions;
 DROP TABLE drinks;
 DROP TABLE suppliers;
 
@@ -17,3 +18,10 @@ CREATE TABLE drinks (
   stock_level INT,
   supplier_id INT REFERENCES suppliers(id) ON DELETE CASCADE
 );
+
+CREATE TABLE promotions (
+  id SERIAL PRIMARY KEY,
+  supplier_id INT REFERENCES suppliers(id) ON DELETE CASCADE,
+  drink_id INT REFERENCES drinks(id) ON DELETE CASCADE,
+  type VARCHAR(255)
+)

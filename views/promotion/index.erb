@@ -1,0 +1,26 @@
+<hr>
+<h3>Current Promotions below:</h3>
+<hr>
+
+
+<table>
+  <tr>
+    <th>Supplier</th>
+    <th>Promotion Type</th>
+    <th>Number of affected products</th>
+  </tr>
+  <% @promotions.each do |promotion| %>
+  <tr>
+    <td>
+      <%= Supplier.find(promotion.supplier_id).name %>
+    </td>
+    <td>
+      <%= promotion.type %> Discount
+    </td>
+    <td>
+      <%= Supplier.drinks(promotion.supplier_id).length %>
+    </td>
+  </tr>
+  <% end %>
+
+</table>

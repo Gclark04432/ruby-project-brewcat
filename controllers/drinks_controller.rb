@@ -3,6 +3,7 @@ require( 'sinatra/contrib/all' )
 require( 'pry' )
 require_relative( '../models/drink.rb' )
 require_relative( '../models/supplier.rb' )
+require_relative( '../models/promotion.rb')
 also_reload( '../models/*' )
 
 require ('pry')
