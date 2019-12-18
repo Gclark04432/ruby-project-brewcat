@@ -4,7 +4,7 @@
   <input value="<%=@drink.name.capitalize%>" type="text" name="name" id="name" required>
 
   <label for="buy_cost">Buy in cost:</label>
-  <input value="<%=@drink.buy_cost%>"type="text" name="buy_cost" id="buy_cost" required>
+  <input value="<%=@drink.buy_cost%>"type="number" name="buy_cost" id="buy_cost" required>
 
   <input type="hidden" name="supplier" value="<%= @drink.supplier %>" required>
   <input type="hidden" name="stock_level" value="<%= @drink.stock_level.to_i %>" required>

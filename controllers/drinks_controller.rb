@@ -50,5 +50,3 @@ post '/drinks/:id' do
   Drink.new(params).update
   redirect to '/drinks'
 end
-
-#destroy/deactivate

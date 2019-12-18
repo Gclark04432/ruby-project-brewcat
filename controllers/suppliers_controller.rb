@@ -38,7 +38,7 @@ get '/suppliers/:id/edit' do
 end
 
 #update
-post '/suppliers/:id' do
+post '/suppliers/:id/' do
   Supplier.new(params).update
   redirect to '/suppliers/?'
 end
