@@ -27,3 +27,7 @@ table a:hover {
   background-color: pink;
   text-decoration: underline;;
 }
+
+td.invisible {
+  border: none;
+}

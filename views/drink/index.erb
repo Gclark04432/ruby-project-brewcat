@@ -51,23 +51,28 @@
       <%= drink.stock_level %>
     </td>
     <% end %>
+    <td class="invisible">
+      <form action="/drinks/<%=drink.id%>/order" method="GET">
+        <input type="submit" value="Order More">
+      </form>
+    </td>
+  </tr>
+  <% end %>
+</table>
+
+<form action="/drinks/" method="GET">
+
+  <p>Filter by supplier below</p>
+  <label for="supplier">Supplier:</label>
+  <select name="supplier_id" id="supplier">
+    <% @suppliers.each do |supplier| %>
+    <option value=<%= supplier.id %>><%= supplier.name.capitalize %></option>
     <% end %>
+  </select>
 
-  </table>
+  <input type="submit" value="Filter">
 
-  <form action="/drinks/" method="GET">
-
-    <p>Filter by supplier below</p>
-    <label for="supplier">Supplier:</label>
-    <select name="supplier_id" id="supplier">
-      <% @suppliers.each do |supplier| %>
-      <option value=<%= supplier.id %>><%= supplier.name.capitalize %></option>
-      <% end %>
-    </select>
-
-    <input type="submit" value="Filter">
-
-  </form>
+</form>
 
 
-  <a href="/drinks/new">Click to create new drink</a>
+<a href="/drinks/new">Click to create new drink</a>
