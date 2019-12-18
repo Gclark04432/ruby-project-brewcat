@@ -6,16 +6,17 @@ require ('pry')
 
 class Promotion
 
-  attr_reader :supplier_id, :drink_id
+  attr_reader :supplier_id, :drink_id, :id
   attr_accessor :type
 
   def initialize(options)
-    @supplier_id = options["supplier_id"]
-    @drink_id = options["drink_id"]
-    @type = options["type"]
+    @supplier_id = options['supplier_id']
+    @drink_id = options['drink_id']
+    @type = options['type']
+    @id = options['id'].to_i if options['id']
   end
 
-  #CRUD methods below
+  # CRUD methods below
   def save()
     sql = "INSERT INTO promotions
     (
@@ -78,4 +79,4 @@ class Promotion
       return  promotion_data.map { |promotion| Promotion.new(promotion)}
     end
 
-end
+  end

@@ -27,7 +27,12 @@
     <td><form action="/promotions/activate" method="GET">
       <input type="submit" value="Activate Promotion">
     </form>
-  </tr>
-  <% end %>
+  </td>
+  <td><form action="/promotions/<%= promotion.id %>/delete" method="POST">
+    <input type="submit" value="Delete Promotion">
+  </form>
+</td>
+</tr>
+<% end %>
 
 </table>

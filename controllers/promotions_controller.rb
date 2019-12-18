@@ -9,6 +9,7 @@ also_reload( '../models/*' )
 #index
 get '/promotions/?' do
   @promotions = Promotion.all()
+  p @promotions
   erb(:"promotion/index")
 end
 
@@ -17,27 +18,27 @@ get '/promotions/new' do
   @suppliers = Supplier.all
   erb(:"promotion/new")
 end
-#
-# #show
-# get '/suppliers/:id' do
-#   @supplier = Supplier.find(params[:id])
-#   @drinks = Supplier.drinks(@supplier.id)
-#   erb(:"supplier/show")
-# end
-#
+
 #create
 post '/promotions/?' do
   @promotion = Promotion.new(params)
   @promotion.save
   erb(:"promotion/create")
 end
-#
+
+#destroy
+post '/promotions/:id/delete' do
+  @promotion = Promotion.find(params['id'])
+  @promotion.delete()
+  redirect to '/promotions'
+end
+
 # #edit
-# get '/suppliers/:id/edit' do
-#   @supplier = Supplier.find(params[:id])
-#   erb(:"supplier/edit")
+# get '/promotions/:id/edit' do
+#   @promotion = Promotion.find(params[:id])
+#   erb(:"promotion/edit")
 # end
-#
+
 # #update
 # post '/suppliers/:id/' do
 #   Supplier.new(params).update
