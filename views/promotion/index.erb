@@ -3,6 +3,13 @@
 <hr>
 
 <table>
+
+  <style>
+    .invisible {
+      border: none;
+    }
+  </style>
+
   <tr>
     <th>Supplier</th>
     <th>Discount</th>
@@ -19,11 +26,11 @@
     <td>
       <%= Supplier.drinks(promotion.supplier_id).length %>
     </td>
-    <td><form action="/promotions/<%= promotion.id %>/activate" method="POST">
+    <td class="invisible"><form action="/promotions/<%= promotion.id %>/activate" method="POST">
       <input type="submit" value="Activate Promotion">
     </form>
   </td>
-  <td><form action="/promotions/<%= promotion.id %>/delete" method="POST">
+  <td class="invisible"><form action="/promotions/<%= promotion.id %>/delete" method="POST">
     <input type="submit" value="Delete Promotion">
   </form>
 </td>

@@ -1,24 +1,29 @@
 <form action="/drinks" method="POST">
 
-  <label for="name">Drink name:</label>
-  <input type="text" name="name" id="name" required>
-
-  <label for="buy_cost">Buy in cost:</label>
-  <input type="text" name="buy_cost" id="buy_cost" required>
-
-  <label for="supplier">Supplier:</label>
-  <select name="supplier" id="supplier" required>
-    <% @suppliers.each do |supplier| %>
-    <% if supplier.active == "t" %>
-    <option value=<%= supplier.name %>><%= supplier.name.capitalize %></option>
-    <% end %>
-    <% end %>
-
-  </select>
-
-  <label for="stock_level">Current stock:</label>
-  <input type="number" name="stock_level" id="stock_level" min="0" required>
-
-  <input type="submit" value="Add Drink">
-
-</form>
+  <p>
+    <label for="name">Drink name:</label>
+    <input type="text" name="name" id="name" required>
+  </p>
+  <p>
+    <label for="buy_cost">Buy in cost (£):</label>
+    <input type="text" name="buy_cost" id="buy_cost" required>
+  </p>
+  <p>
+    <label for="supplier">Supplier:</label>
+    <select name="supplier" id="supplier" required>
+      <option value="" selected disabled hidden>Choose here</option>
+        <% @suppliers.each do |supplier| %>
+        <% if supplier.active == "t" %>
+        <option value=<%= supplier.name %>><%= supplier.name.capitalize %></option>
+        <% end %>
+        <% end %>
+      </select>
+    </p>
+    <p>
+      <label for="stock_level">Current stock:</label>
+      <input type="number" name="stock_level" id="stock_level" min="0" required>
+    </p>
+    <p>
+      <input type="submit" value="Add Drink">
+    </p>
+  </form>

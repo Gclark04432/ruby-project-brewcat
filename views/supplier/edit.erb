@@ -1,24 +1,28 @@
 <form action="/suppliers/<%=@supplier.id%>" method="POST">
 
-  <label for="name">Supplier Name:</label>
-  <input value="<%=@supplier.name.capitalize%>" type="text" name="name" id="name">
-
-  <label for="code">Supplier Code:</label>
-  <input value="<%=@supplier.supplier_code%>"type="text" name="supplier_code" id="code">
-
-  <label for="active">Satus:</label>
-  <select name="active" id="active">
-    <option value="true"
-    <%= "selected" if @supplier.active == "t" %>>
-    Active
+  <p>
+    <label for="name">Supplier Name:</label>
+    <input value="<%=@supplier.name.capitalize%>" type="text" name="name" id="name">
+  </p>
+  <p>
+    <label for="code">Supplier Code:</label>
+    <input value="<%=@supplier.supplier_code%>"type="text" name="supplier_code" id="code">
+  </p>
+  <p>
+    <label for="active">Satus:</label>
+    <select name="active" id="active">
+      <option value="true"
+      <%= "selected" if @supplier.active == "t" %>>
+      Active
+    </option>
+    <option value="false"
+    <%= "selected" if @supplier.active == "f" %>>
+    Inactive
   </option>
-
-  <option value="false"
-  <%= "selected" if @supplier.active == "f" %>>
-  Inactive
-</option>
 </select>
-
-<input type="submit" value="Confirm Amendment">
+</p>
+<p>
+  <input type="submit" value="Confirm Amendment">
+</p>
 
 </form>

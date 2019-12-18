@@ -10,17 +10,22 @@
 </html>
 <form action="/promotions" method="POST">
 
-  <label for="supplier">Supplier:</label>
-  <select name="supplier_id" id="supplier">
-    <% @suppliers.each do |supplier| %>
-    <option value="<%= supplier.id %>"><%= supplier.name %>
-    </option>
-    <% end %>
-  </select>
-
-  <label for="type">Discount %:</label>
-  <input type="number" name="type" id="type" required >
-
-  <input type="submit" value="Add Promotion">
+  <p>
+    <label for="supplier">Supplier:</label>
+    <select name="supplier_id" id="supplier">
+      <option value="" selected disabled hidden>Choose here</option>
+      <% @suppliers.each do |supplier| %>
+      <option value="<%= supplier.id %>"><%= supplier.name %>
+      </option>
+      <% end %>
+    </select>
+  </p>
+  <p>
+    <label for="type">Discount %:</label>
+    <input type="number" name="type" id="type" required >
+  </p>
+  <p>
+    <input type="submit" value="Add Promotion">
+  </p>
 
 </form>

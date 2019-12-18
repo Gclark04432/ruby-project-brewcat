@@ -1,14 +1,19 @@
 <form action="/drinks/<%=@drink.id%>" method="POST">
 
-  <label for="name">Drink Name:</label>
-  <input value="<%=@drink.name.capitalize%>" type="text" name="name" id="name" required>
-
-  <label for="buy_cost">Buy in cost:</label>
-  <input value="<%=@drink.buy_cost%>"type="number" name="buy_cost" id="buy_cost" required>
-
-  <input type="hidden" name="supplier" value="<%= @drink.supplier %>" required>
-  <input type="hidden" name="stock_level" value="<%= @drink.stock_level.to_i %>" required>
-
-  <input type="submit" value="Confirm Amendment">
+  <p>
+    <label for="name">Drink Name:</label>
+    <input value="<%=@drink.name.capitalize%>" type="text" name="name" id="name" required>
+  </p>
+  <p>
+    <label for="buy_cost">Buy in cost (£):</label>
+    <input value="<%=@drink.buy_cost%>"type="number" name="buy_cost" id="buy_cost" required>
+  </p>
+  <p>
+    <input type="hidden" name="supplier" value="<%= @drink.supplier %>" required>
+    <input type="hidden" name="stock_level" value="<%= @drink.stock_level.to_i %>" required>
+  </p>
+  <p>
+    <input type="submit" value="Confirm Amendment">
+  </p>
 
 </form>

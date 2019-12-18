@@ -1,5 +1,41 @@
-<hr>
-<h3><span>Current Stock below:</span></h3>
+<style>
+
+  .filter {
+    display: inline;
+    justify-content: right;
+    align-self: center;
+  }
+
+  .in-filter {
+    display: flex;
+  }
+
+</style>
+
+<div class="in-filter">
+
+  <h3><span>Current Stock below:</span></h3>
+
+  <form class="filter" action="/drinks/" method="GET">
+
+    <p class="filter">Filter by supplier:
+      <label for="supplier"></label>
+      <select name="supplier_id" id="supplier">
+        <% @suppliers.each do |supplier| %>
+        <option value=<%= supplier.id %>><%= supplier.name.capitalize %></option>
+        <% end %>
+      </select>
+
+      <input type="submit" value="Filter">
+    </p>
+  </form>
+
+  <form class="filter" action="/drinks/" method="GET">
+    <input type="submit" value="Reset">
+  </form>
+
+</div>
+
 <hr>
 
 <table>
@@ -10,6 +46,10 @@
 
     .no_stock{
       background-color: red;
+    }
+
+    .invisible{
+      border: none;
     }
 
   </style>
@@ -59,21 +99,6 @@
   </tr>
   <% end %>
 </table>
-
-<form action="/drinks/" method="GET">
-
-  <p>Filter by supplier below</p>
-  <label for="supplier">Supplier:</label>
-  <select name="supplier_id" id="supplier">
-    <% @suppliers.each do |supplier| %>
-    <option value=<%= supplier.id %>><%= supplier.name.capitalize %></option>
-    <% end %>
-  </select>
-
-  <input type="submit" value="Filter">
-
-</form>
-
 
 <p>
   <a href="/drinks/new"><span>Click to create new drink</span></a>

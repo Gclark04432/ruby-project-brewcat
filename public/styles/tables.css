@@ -1,6 +1,7 @@
 table, th, td, tr {
   border-collapse: collapse;
-  border: 1px solid black;
+  border: 2px solid purple;
+  padding: auto;
 }
 
 th {
@@ -9,13 +10,12 @@ th {
   font-family: Helvetica;
   justify-content: center;
   margin: auto;
-  background-color: #88CFD9;
+  background-color: #88CFD9
 }
 
 td {
   text-align: center;
   justify-content: flex-start;
-  padding:inherit;
 }
 
 table a {
@@ -29,19 +29,6 @@ table a:hover {
   text-decoration: underline;;
 }
 
-td.invisible {
+table, tr, td .invisible {
   border: none;
-}
-
-td .warning {
-  background: url('/icons/exclamation-triangle-solid.svg') 96% / 15% no-repeat papayawhip;
-  width: 150px;
-  padding: 5px 35px 5px 5px;
-  margin: 15px 0;
-  font-size: 0.8em;
-  -webkit-appearance: none;
-  background: url('/images/hazard.png') 96% / 15% no-repeat papayawhip;
-  font-family: 'Merriweather', serif;
-  border: 1px solid #eee;
-  display: block;
 }
